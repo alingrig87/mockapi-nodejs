@@ -27,3 +27,15 @@ app.get('/products', (req, res) => {
 // start the server - on port 3000
 app.listen(3000);
 ```
+
+8. Open the browser and go [here](http://localhost:3000);
+
+### Middleware
+
+```javascript
+// MIDLEWARE
+app.use('/products', () => {
+	console.log('/products endpoint was accessed');
+});
+// specific function running when /products endpoint is reached
+```

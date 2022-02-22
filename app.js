@@ -1,14 +1,16 @@
 import express from 'express';
+import 'dotenv/config';
+import mongoose from 'mongoose';
+import router from './routes/products.js';
 
 const app = express();
 
-// ROUTES
-app.get('/', (req, res) => {
-	res.send('Hello MockApi Node JS!');
-});
+// MIDLEWARE
+app.use('/products', router);
 
-app.get('/products', (req, res) => {
-	res.send('Hello from /products endpoint!');
+// connect to DB
+mongoose.connect(process.env.MONGO_URI, () => {
+	console.log('Connected to Mongo DB!!');
 });
 
 // start the server - on port 3000
